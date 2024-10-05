@@ -1,10 +1,12 @@
-package es.comepiedras.retosprogramacion.spring_data.service;
+package es.comepiedras.retosprogramacion.spring_data.controller;
 
 import es.comepiedras.retosprogramacion.spring_data.model.User;
+import es.comepiedras.retosprogramacion.spring_data.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -16,6 +18,11 @@ public class UserController {
     @PostMapping
     public User createUser(@RequestBody User user){
         return userService.createUser(user);
+    }
+
+    @GetMapping
+    private List<User> getAllUsers(){
+        return userService.getAllUsers();
     }
 
     @GetMapping("/{id}")
